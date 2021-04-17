@@ -43,7 +43,25 @@ curl --request POST \
 
 `type` can be `image` | `video` | `doc`
 
+
 2. Stream Video
 
+```
+curl --request GET \
+  --url 'http://localhost:8000/file/stream?path=userId%2Fvideo%2Fsample&quality=144p' \
+  --header 'appKey: appKey'
+```
+
+path we recieve while upload video
+
 3. Download file
+
+```
+curl --request GET \
+  --url 'http://localhost:8000/file?path=userId%2Fimage%2Fperson&type=thumbnail' \
+  --header 'appKey: app_key_123abc'
+
+```
+
+send `type` as `thumbnail` or `main`
 
