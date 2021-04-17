@@ -59,7 +59,7 @@ path we recieve while upload video
 ```
 curl --request GET \
   --url 'http://localhost:8000/file?path=userId%2Fimage%2Fperson&type=thumbnail' \
-  --header 'appKey: app_key_123abc'
+  --header 'appKey: appKey'
 
 ```
 
