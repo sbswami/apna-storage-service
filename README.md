@@ -52,7 +52,8 @@ curl --request GET \
   --header 'appKey: appKey'
 ```
 
-path we recieve while upload video
+we recieve `path` and list of `quality` in response of upload API call
+
 
 3. Download file
 
