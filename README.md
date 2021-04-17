@@ -25,3 +25,25 @@ APP_KEY = <APP_SECRET_KEY>
 
 `yarn start`
 
+
+### Example API calls
+
+1. Upload file
+
+```
+curl --request POST \
+  --url http://localhost:8000/file/upload \
+  --header 'Content-Type: multipart/form-data; boundary=---011000010111000001101001' \
+  --header 'appKey: app_key_123abc' \
+  --header 'userId: this_is_uid_12345' \
+  --form file=@/Users/name/Documents/person.png \
+  --form type=image \
+  --form thumbnail=@/Users/name/Downloads/person-min.png
+```
+
+`type` can be `image` | `video` | `doc`
+
+2. Stream Video
+
+3. Download file
+
