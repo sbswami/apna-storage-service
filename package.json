@@ -1,0 +1,30 @@
+{
+  "name": "apna-storage",
+  "version": "0.0.1",
+  "description": "Apna Storage",
+  "main": "index.js",
+  "repository": "https://sbswami24@gitlab.com/sbswami24/apna-storage.git",
+  "author": "(Shyam Bihari Swami <sbswami24@gmail.com>)",
+  "scripts": {
+    "start": "nodemon --exec babel-node  server/index.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "eslint": "^7.23.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "@log4js-node/logstash-http": "^1.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^9.0.1",
+    "log4js": "^6.3.0",
+    "multer": "2.0.0-alpha.7"
+  }
+}
