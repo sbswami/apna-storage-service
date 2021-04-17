@@ -34,8 +34,8 @@ APP_KEY = <APP_SECRET_KEY>
 curl --request POST \
   --url http://localhost:8000/file/upload \
   --header 'Content-Type: multipart/form-data; boundary=---011000010111000001101001' \
-  --header 'appKey: app_key_123abc' \
-  --header 'userId: this_is_uid_12345' \
+  --header 'appKey: appKey' \
+  --header 'userId: userId' \
   --form file=@/Users/name/Documents/person.png \
   --form type=image \
   --form thumbnail=@/Users/name/Downloads/person-min.png
