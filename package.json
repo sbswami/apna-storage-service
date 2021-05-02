@@ -6,8 +6,11 @@
   "repository": "https://sbswami24@gitlab.com/sbswami24/apna-storage.git",
   "author": "(Shyam Bihari Swami <sbswami24@gmail.com>)",
   "scripts": {
-    "start": "nodemon --exec babel-node  server/index.js"
+    "start": "nodemon --exec babel-node  server/index.js",
+    "dev": "node scripts/dev.js",
+    "prod": "node scripts/prod.js"
   },
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",

@@ -1,7 +1,6 @@
 import {videoSaver} from '../helper/videoSaver';
 import {C, FileName, FileType} from '../utils/constants';
 import {badRequest} from '../utils/errorHandling';
-import {fileNameWithoutExtension} from '../utils/util';
 
 const fs = require('fs-extra');
 const {promisify} = require('util');
@@ -12,7 +11,7 @@ export const uploadFile = async (req, res) => {
     // Upload File
     const {
       files,
-      body: {type},
+      body: {type, name},
     } = req;
 
     // File
@@ -22,7 +21,7 @@ export const uploadFile = async (req, res) => {
     const thumbnail = files?.thumbnail[0];
 
     // Get file name
-    const fileName = fileNameWithoutExtension(file.originalName);
+    // const fileName = fileNameWithoutExtension(file.originalName);
 
     // File Extension
     const fileExtension = file.detectedFileExtension;
@@ -30,7 +29,7 @@ export const uploadFile = async (req, res) => {
     // File level directory
     const filePath = `${process.env.ROOT}/${req.get(
       C.USER_ID,
-    )}/${type}/${fileName}`;
+    )}/${type}/${name}`;
 
     // Create new directory
     await fs.mkdir(filePath, {recursive: true});

@@ -14,8 +14,16 @@ export const videoSaver = async (finalPath, extension, getSizes) => {
     }
 
     // Video Size
-    const width = metadata.streams[0].width;
-    const height = metadata.streams[0].height;
+    let width = metadata.streams[0].width;
+    let height = metadata.streams[0].height;
+
+    const rotation = metadata.streams[0]?.rotation;
+
+    if (rotation === 90) {
+      let temp = width;
+      width = height;
+      height = temp;
+    }
 
     // Video out put sizes
     const sizes = videoSized(width, height, finalPath, extension);
@@ -30,11 +38,16 @@ export const videoSaver = async (finalPath, extension, getSizes) => {
     sizes.forEach(item => {
       try {
         // Output configuration of each video
-        command.output(item.filename).videoCodec('libx264').size(item.size);
+        command
+          .output(item.filename)
+          .videoCodec('libx264')
+          .aspect(`${width}:${height}`)
+          .size(item.size);
       } catch (e) {
         logger.error(e.message);
       }
     });
+    if (sizes.length === 0) return;
 
     command
       .on('error', function (err) {
@@ -46,6 +59,7 @@ export const videoSaver = async (finalPath, extension, getSizes) => {
       .on('end', async function () {
         // Delete the file after complete saving files
         // Because original size is also compressed in this process
+
         await fs.unlink(finalPath);
       })
       .run();
@@ -57,6 +71,10 @@ const videoSized = (width, height, fullPath, extension) => {
   const path = getFilePath(fullPath);
 
   const sizes = [];
+
+  if (width === undefined || height === undefined) {
+    return [];
+  }
   // Video Orientation
   const horizontal = width > height;
 
